@@ -1,7 +1,6 @@
 package ru.netology.test;
 
 import lombok.var;
-import ru.netology.login.DashboardPage;
 
 import static com.codeborne.selenide.Selenide.open;
 
