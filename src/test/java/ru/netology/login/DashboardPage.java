@@ -29,6 +29,7 @@ public class DashboardPage {
         return new MoneyTransferPage();
     }
     private int extractBalance(String text) {
+        /**/
         var start = text.indexOf(balanceStart);
         var finish = text.indexOf(balanceFinish);
         var value = text.substring(start + balanceStart.length(), finish);

@@ -1,12 +1,11 @@
 package ru.netology.login;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.DataHelper;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -32,6 +31,7 @@ public class MoneyTransferPage {
         fromInput.setValue(cardInfo.getCardNumber());
         transferButton.click();
     }
+
     public void findErrorMessage(String expectedText) {
         errorMessage.shouldHave(Condition.exactText(expectedText), Duration.ofSeconds(15)).shouldBe(Condition.visible);
     }
