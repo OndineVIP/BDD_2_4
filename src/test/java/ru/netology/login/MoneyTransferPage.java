@@ -1,5 +1,7 @@
 package ru.netology.login;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import ru.netology.data.DataHelper;
 
 import java.time.Duration;
 
@@ -9,14 +11,15 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class MoneyTransferPage {
+
     private final SelenideElement transferButton = $("[data-test-id=action-transfer]");
     private final SelenideElement amountInputNew = $("[data-test-id=amount] input");
     private final SelenideElement fromInput = $("[data-test-id=from] input");
-    private SelenideElement transferHead = $(byText("Пополнить"));
-    private final SelenideElement errorMessage = $("[data-test-id=error-message]");
+    private final SelenideElement transferHead = $(byText("Пополнение карты"));
+    private final SelenideElement errorMessage = $("[data-test-id=action-cancel]");
 
     public MoneyTransferPage() {
-        transferHead.shouldBe(visible);
+        transferHead.shouldBe(Condition.visible);
     }
 
     public DashboardPage makeValidTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {
@@ -29,12 +32,7 @@ public class MoneyTransferPage {
         fromInput.setValue(cardInfo.getCardNumber());
         transferButton.click();
     }
-
     public void findErrorMessage(String expectedText) {
-        errorMessage.shouldHave(exactText(expectedText), Duration.ofSeconds(15)).shouldBe(visible);
-    }
-    public SelenideElement getTransferHead() {
-        return transferHead;
+        errorMessage.shouldHave(Condition.exactText(expectedText), Duration.ofSeconds(15)).shouldBe(Condition.visible);
     }
 }
-
