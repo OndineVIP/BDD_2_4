@@ -12,7 +12,6 @@ import static ru.netology.data.DataHelper.*;
 
 public class MoneyTransferTest {
     DashboardPage dashboardPage;
-
     @BeforeEach
     void setUp() {
         var loginPage = open("http://localhost:9999", LoginPage.class);
