@@ -15,6 +15,7 @@ public class DashboardPage {
     private final String balanceFinish = " р.";
     private final SelenideElement heading = $("[data-test-id=dashboard]");
     private final ElementsCollection cards = $$(".list__item div");
+
     public DashboardPage() {
         heading.shouldBe(visible);
     }
@@ -28,6 +29,7 @@ public class DashboardPage {
         cards.findBy(attribute("data-test-id", cardInfo.getTestId())).$("button").click();
         return new MoneyTransferPage();
     }
+
     private int extractBalance(String text) {
         /**/
         var start = text.indexOf(balanceStart);
